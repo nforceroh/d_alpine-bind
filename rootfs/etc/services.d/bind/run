@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bash
+echo "STARTING SERVICE: bind"
+UMASK_SET=${UMASK_SET:-000}
+umask ${UMASK_SET}
+
+/bin/s6-setuidgid abc named -c /bind/etc/named.conf -g -u named
